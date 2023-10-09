@@ -1,0 +1,57 @@
+---
+const { title } = Astro.props;
+import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body class="flex flex-col h-screen">
+        <main class="pt-12 mx-auto flex-grow">
+            <slot />
+        </main>
+        <footer
+            class="w-screen p-4 rounded-t-lg rounded-r-lg shadow md:p-6 dark:bg-gray-800"
+        >
+            <div class="md:flex md:items-center md:justify-between">
+                <span
+                    class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+                    >Created with <a
+                        href="https://astro.build/"
+                        class="hover:underline">Astro</a
+                    > and <a
+                        href="https://contentful.com/"
+                        class="hover:underline">Contentful</a
+                    >
+                </span>
+                <ul
+                    class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0"
+                >
+                    <li>
+                        <a
+                            href="https://www.contentful.com/astro-tutorial/"
+                            class="mr-4 hover:underline md:mr-6">Read More</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://github.com/contentful/starter-astro-bookshelf"
+                            class="mr-4 hover:underline md:mr-6">GitHub</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <p class="text-sm">
+                *All the content (textual and images) are generated using
+                Generative AI.
+            </p>
+        </footer>
+    </body>
+</html>

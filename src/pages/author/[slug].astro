@@ -1,0 +1,43 @@
+---
+import { client } from "../../lib/contentful";
+import Layout from "../../layouts/Layout.astro";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import Header from "../../components/Header.astro";
+
+const { slug } = Astro.params;
+let author;
+
+try {
+    author = await client.getAuthor(slug);
+} catch (error) {
+    return Astro.redirect("/404");
+}
+---
+
+<Layout title={author.name}>
+    <Header />
+    <section class="px-2 sm:px-12 mb-8" transition:animate="slide">
+        <h1 class="text-6xl">
+            {author.name}
+        </h1>
+        <div
+            class="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-2 xl:gap-x-8 pt-8"
+        >
+            <div
+                class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+            >
+                <img
+                    src={author.avatar.url}
+                    class="h-full w-full object-cover object-center group-hover:opacity-75"
+                    alt={author.avatar.description}
+                />
+            </div>
+            <div>
+                <article
+                    set:html={documentToHtmlString(author.bio.json)}
+                    class="leading-loose text-slate-200 text-justify"
+                />
+            </div>
+        </div>
+    </section>
+</Layout>

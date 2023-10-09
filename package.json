@@ -1,0 +1,19 @@
+{
+  "name": "contentful-astro-starter-998b",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "setup": "node ./bin/setup.js",
+    "start": "astro dev"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "@contentful/rich-text-html-renderer": "^16.1.2",
+    "astro": "^3.1.1",
+    "tailwindcss": "^3.3.3"
+  }
+}
