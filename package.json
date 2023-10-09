@@ -11,6 +11,7 @@
     "start": "astro dev"
   },
   "dependencies": {
+    "@astrojs/node": "^6.0.3",
     "@astrojs/tailwind": "^5.0.0",
     "@contentful/rich-text-html-renderer": "^16.1.2",
     "astro": "^3.1.1",
