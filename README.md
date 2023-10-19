@@ -4,7 +4,7 @@ Create your bookshelf with [Contentful](https://contentful.com) and [Astro](http
 
 ## Demo
 
-[Link]()
+[Link](https://astro-bookshelf.netlify.app/)
 
 ![Screenshot of the homepage of the website](./docs/homepage.png)
 
