@@ -7,7 +7,6 @@
   "type": "module",
   "dependencies": {
     "contentful-import": "^9.2.1",
-    "inquirer": "^9.2.11",
-    "sort-package-json": "^2.6.0"
+    "inquirer": "^9.2.11"
   }
 }

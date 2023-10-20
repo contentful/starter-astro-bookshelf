@@ -1,39 +1,11 @@
 import spaceImport from 'contentful-import';
 import inquirer from 'inquirer';
-import { randomBytes } from "crypto";
-import { readFile, writeFile } from "fs/promises";
-import { join, basename, resolve } from "path";
-import sort from "sort-package-json";
-
-function escapeRegExp(string) {
-    // $& means the whole matched string
-    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function getRandomString(length) {
-    return randomBytes(length).toString("hex");
-}
+import { readFile, writeFile, rm } from "fs/promises";
+import { join, basename, resolve, parse } from "path";
 
 async function main() {
     const __dirname = resolve();
-    const README_PATH = join(__dirname, "README.md");
-    const PACKAGE_JSON_PATH = join(__dirname, "package.json");
-
-    const REPLACER = "contentful-remix-stack";
-
-    const DIR_NAME = basename(__dirname);
-    const SUFFIX = getRandomString(2);
-    const APP_NAME = DIR_NAME + "-" + SUFFIX;
-
-    const [readme, packageJson] = await Promise.all([
-        readFile(README_PATH, "utf-8"),
-        readFile(PACKAGE_JSON_PATH, "utf-8"),
-    ]);
-
-    const newReadme = readme.replace(
-        new RegExp(escapeRegExp(REPLACER), "g"),
-        APP_NAME
-    );
+    const DIR_NAME = basename(parse(__dirname).dir);
 
     const answers = await inquirer.prompt([
         {
@@ -70,7 +42,7 @@ async function main() {
             }
         }
     ]);
-    console.log('Creating .env file...')
+    console.log('🆕 Creating .env file...')
     const ENV_PATH = join(__dirname, ".env")
     const newEnv = [
         `# All environment variables will be sourced`,
@@ -81,26 +53,16 @@ async function main() {
     ]
         .filter(Boolean)
         .join('\n')
-
-    const newPackageJson =
-        JSON.stringify(
-            sort({ ...JSON.parse(packageJson), name: APP_NAME }),
-            null,
-            2
-        ) + "\n";
-
     console.log(
-        `Updating files...`
+        `🔄 Updating files...`
     );
 
     await Promise.all([
-        writeFile(README_PATH, newReadme),
         writeFile(ENV_PATH, newEnv),
-        writeFile(PACKAGE_JSON_PATH, newPackageJson),
     ]);
 
     console.log(
-        `Running the setup script to import content model`
+        `🏃‍♀️🏃🏃‍♂️ Running the setup script to import content model`
     );
 
     await spaceImport({
@@ -108,6 +70,12 @@ async function main() {
         spaceId: answers.spaceId,
         managementToken: answers.contentManagementToken
     })
+
+    console.log(
+        `🗑️ Removing the setup dependencies`
+    );
+
+    await rm(`${__dirname}/bin/node_modules`, { recursive: true })
 
     console.log(`✅  Project is ready! Start development with "npm run dev"`);
 }

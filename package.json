@@ -1,5 +1,5 @@
 {
-  "name": "contentful-astro-starter-998b",
+  "name": "contentful-astro-starter",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
-    "setup": "node ./bin/setup.js",
+    "setup": "cd ./bin && npm install && cd .. && node ./bin/setup.js",
     "start": "astro dev"
   },
   "dependencies": {
