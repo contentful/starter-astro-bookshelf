@@ -2,17 +2,12 @@
 
 Create your bookshelf with [Contentful](https://contentful.com) and [Astro](https://astro.build/).
 
-## Demo
-
-[Link](https://astro-bookshelf.netlify.app/)
-
-![Screenshot of the homepage of the website](./docs/homepage.png)
-
 ## Disclaimer
 
- All the content for this starter has been generated using Generative AI. The following [Marketplace](https://www.contentful.com/marketplace/) apps were used to generate the content:
- - [AI Content Generator](https://www.contentful.com/marketplace/app/ai-content-generator/)
- - [AI Image Generator](https://www.contentful.com/marketplace/app/ai-image-generator/)
+All the content for this starter has been generated using Generative AI. The following [Marketplace](https://www.contentful.com/marketplace/) apps were used to generate the content:
+
+- [AI Content Generator](https://www.contentful.com/marketplace/app/ai-content-generator/)
+- [AI Image Generator](https://www.contentful.com/marketplace/app/ai-image-generator/)
 
 ## Features
 
@@ -72,7 +67,6 @@ The [content model](https://www.contentful.com/developers/docs/concepts/data-mod
 
 For this example you need to create a content model that defines the author, and book. **You can create them automatically by using this starter or by doing it manually** to familiarize yourself with the Contentful user interface.
 
-
 #### Create the content model manually
 
 ##### Create a `Book Author` content type
@@ -84,7 +78,7 @@ From your Contentful space, go to **Content model** and add a new content type:
 Once the content model is saved, add these fields (you don't have to modify the settings unless specified):
 
 - `Name` - **Text** field (type **short text**).
-    - Under **Field Options** in Settings, check ***This field represents the Entry title***
+  - Under **Field Options** in Settings, check **_This field represents the Entry title_**
 - `Bio` - **Rich Text** field.
 - `Avatar` - **Media** field.
 
@@ -104,8 +98,8 @@ Once the content model is saved, add these fields (you don't have to modify the 
 - `Description` - **Rich Text** field.
 - `Cover Image` - **Media** field.
 - `Author` - **References** field (type **Single references**).
-    - Under **Validation**, check ***Required field***.
-    - Under **Validation**, check **_Accept only specified entry type_** and select ***Author***.
+  - Under **Validation**, check **_Required field_**.
+  - Under **Validation**, check **_Accept only specified entry type_** and select **_Author_**.
 
 ### Step 3. Validate your content model
 
@@ -165,7 +159,6 @@ Your app should be up and running on [http://localhost:4321](http://localhost:43
 
 Click on the button below to deploy your site to Netlify.
 
-[![Deploy](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/contentful/starter-astro-bookshelf.git
-)
+[![Deploy](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/contentful/starter-astro-bookshelf.git)
 
-**NOTE:** You'll have to configure the ***CONTENTFUL_SPACE_ID*** and ***CONTENTFUL_ACCESS_TOKEN*** values.
+**NOTE:** You'll have to configure the **_CONTENTFUL_SPACE_ID_** and **_CONTENTFUL_ACCESS_TOKEN_** values.
